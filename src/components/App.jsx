@@ -1,34 +1,28 @@
 import React, { useState } from "react";
 
 function App() {
-  const [headingTxt, setheadingTxt] = useState("Hello");
-  const [isMousedOver, setMouseOver] = useState(false);
+  const [name, setName] = useState("");
+  const [headingText, setHeading] = useState("");
+
+  function handleInputChange(event) {
+    setName(event.target.value);
+  }
 
   function handleClick() {
-    setheadingTxt("Submitted");
+    setHeading(name);
   }
 
-  function handleMouseOver() {
-    setMouseOver(true);
-  }
-
-  function handleMouseOut() {
-    setMouseOver(false);
-  }
-
+  // ? uses ternary operator to change the state of the backgroundColor property
   return (
     <div className="container">
-      <h1>{headingTxt}</h1>
-      <label htmlFor="someName"></label>
-      <input type="text" placeholder="What's your name?" id="someName" />
-      <button
-        style={{ backgroundColor: isMousedOver ? "black" : "white" }}
-        onClick={handleClick}
-        onMouseOver={handleMouseOver}
-        onMouseOut={handleMouseOut}
-      >
-        Submit
-      </button>
+      <h1>Hello {headingText}</h1>
+      <input
+        onChange={handleInputChange}
+        type="text"
+        placeholder="What's your name?"
+        value={name}
+      />
+      <button onClick={handleClick}>Submit</button>
     </div>
   );
 }
