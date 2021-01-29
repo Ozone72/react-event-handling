@@ -7,7 +7,7 @@ function App() {
   function handleInputChange(event) {
     setName(event.target.value);
   }
-
+  // ! Single source of truth for controlled component in this case is name variable
   function handleClick() {
     setHeading(name);
   }
